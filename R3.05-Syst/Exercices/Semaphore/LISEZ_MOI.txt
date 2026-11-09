@@ -1,0 +1,8 @@
+*** Semaphore ***
+Un sémaphore est un object partagée par différents threads, qui garantit que ceux-ci ne peuvent
+y accéder que de façon séquentielle à travers des opérations atomiques, et constitue la méthode
+utilisée couramment pour restreindre l'accès à des ressources partagées (par exemple un espace
+de stockage) et synchroniser les processus dans un environnement de programmation concurrente.
+
+A FAIRE... A FAIRE... A FAIRE...
+

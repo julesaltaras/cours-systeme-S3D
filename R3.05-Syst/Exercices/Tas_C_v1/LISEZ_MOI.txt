@@ -1,0 +1,34 @@
+*** Tas_C_v1 ***
+
+Objectif: prendre conscience du tas (heap in English), de son utilité et de ses limites.
+
+Lire, compiler puis exécuter le programme "malloc_free.c". Constater que l'écart entre 
+les adresses de deux allocations successives ne change pas pour le type "char" (1 octet)
+ainsi que pour le type "int" (4 octets). Pourquoi ne reçoit on pas simplement l'adresse 
+de l'octet suivant en cas d'allocations successives de 2 "char" ?  
+Quel gâchis de mémoire! (*)
+
+Modifier le programme "malloc-free.c" pour constater que le même phénomène se produit 
+pour le type "double" qui correspond au plus gros type élémentaires du langage C (soit 
+8 octets en général). Est-ce que l'allocation consécutive de deux "double" implique 
+également un gâchis (la perte?) d'une zone intermédiaire ?
+
+Question: la procédure free fonctionne-t-elle bien ? Justifiez votre réponse.
+
+----
+
+(*) Explications concernant ce "gâchis" de mémoire: Les adresses (%p) sont exprimées
+en hexadécimal et une variation de 1 permet d'accéder à l'octet (le "char") suivant. 
+Sur la grande majorité des machines, il est possible de lire ou d'écrire un octet à 
+n'importe quelle adresse de la mémoire. En général, le matériel (le "hardware") ne 
+permet pas de lire ou d'écrire facilement un "double" (le plus gros des objets 
+élémentaires) à partir de n'importe quelle adresse mémoire. Pour simplifier la 
+génération du code machine des programmes, tous les résultats de "malloc" sont à 
+des adresses qui sont en général un multiple de la taille des "double". Comme il 
+faut également ajouter de l'information qui permet d'implanter "free", et sachant que 
+cette information est habituellement rangée dans la zone mémoire qui précède l'adresse 
+retournée par "malloc", ceci explique cela.
+
+Manipulation / Observation: En utilisant le débogueur ddd, essayer de comprendre comment
+le couple de fonction C malloc/free utilise l'emplacement qui précède l'adresse qui est
+retournée à l'utilisateur (on doit certainement pouvoir y retrouver la taille du bloc).

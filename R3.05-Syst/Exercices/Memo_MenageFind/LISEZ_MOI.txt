@@ -1,0 +1,28 @@
+*** Memo_MenageFind ***
+
+A priori, tous les exemples de commandes données dans ce fichier ne sont pas
+dangereuses pour l'état de votre disque, mais soyez prudents quand même.
+Notez également que les commandes risquent de ne pas marcher quand les chemins
+ou les noms de fichiers contiennent des espaces.
+Pour débuter, évitez de mettre des espaces dans vos noms de répertoires ou de
+fichiers.
+
+----
+
+Exercice 1: En vous inspirant de la commande suivante, construisez une commande 
+permettant d'effacer tous les fichiers *.class accessibles à partir de votre 
+home directory:
+
+find /usr -name '*.h' -exec echo hip {} hop \;
+
+----
+
+Exercice 2: Même question en vous inspirant de la commande suivante:
+
+find /usr/include -name '*stdio*.h' | xargs echo DEBUT
+
+----
+
+Exercice 3: Même question en vous inspirant de la commande suivante:
+
+echo DEBUT $(ls /usr/include/std*.h) FIN

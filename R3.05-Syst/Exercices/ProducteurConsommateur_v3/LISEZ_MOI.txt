@@ -1,0 +1,10 @@
+*** ProducteurConsommateur_v3 ***
+
+Programmez maintenant l'exemple du producteur consommateur en bash en utilisant un
+un pipe anonyme ou nommé(*).
+
+----
+
+(*) : Voir la commande mkfifo pour faire un tube nommé.
+ 
+

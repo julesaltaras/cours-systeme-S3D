@@ -1,0 +1,137 @@
+*** Starter ***
+
+Ce premier "LISEZ_MOI.txt" n'est pas véritablement un sujet d'exercices. Il s'agit
+de la première séance de remise en route. Lisez toutes les recommandations et 
+effectuez les  manipulations qui vous sont proposées.
+
+------
+
+Sauf s'il n'y a pas assez de machines, les exercices doivent être fait seul et 
+non pas en binôme. Dans tous les cas, toutes les machines de la salle doivent 
+être utilisées. Si vous disposez d'un portable personnel avec Linux, vous pouvez 
+l'utiliser durant les séances.
+
+------
+
+Vérifiez que votre terminal lance bien "/bin/bash" par défaut (un "Ctrl r" permet
+de savoir si c'est bien "/bin/bash" qui tourne dans le terminal). Si le shell par 
+défaut de l'application terminal n'est pas bash, il faut utiliser le menu "Edit" 
+puis "Profiles". Mettre "/bin/bash" comme shell par défaut.
+
+------
+
+Dans un terminal "/bin/bash", vérifiez votre consommation d'espace disque avec les 
+commandes suivantes:
+
+   du -k ~
+   df ~
+
+Il faut savoir que votre "home directory" sous Linux est sur un disque partagé via
+le réseau. Attention, même si le disque est partagé entre windows et Unix, le home
+unix n'est pas forcément au même endroit que le home windows.
+En outre, comme les formats de disque supportés par windows sont très pauvres, il 
+est possible que le disque partagé soit un disque ne permettant pas toutes les 
+opérations de changement de droits habituelles sous Unix.
+
+Attention, votre espace disque est probablement limité par un système de quotas. 
+Si vous utilisez trop de place, vous pouvez même empêcher le window manager de 
+démarrer. Bien entendu, il faut alors faire du ménage pour avoir suffisamment 
+d'espace de manoeuvre.
+
+------
+
+Vérifiez la configuration de votre connexion internet en essayant d'utiliser un 
+navigateur. Si elle marche ne changez rien (sinon voyez avec votre enseignant).
+Attention, il faut aussi penser à vérifier la taille du cache du navigateur qui
+est souvent trop grande.
+
+------
+
+Vérifiez votre PATH avec soin ainsi que les différents fichiers de configuration
+bash (éditer le fichier ".bashrc" si besoin et avec précautions). Votre PATH doit 
+vous permettre de pouvoir lancer la liste suivante de logiciels: "gcc", "ddd", 
+"emacs", "javac", "java".
+
+------
+
+Essai de compilation C. Utilisez le fichier "essai.c" qui est dans ce répertoire.
+Pour compiler:
+     gcc -Wall -o essai essai.c
+
+Pour exécuter:
+     ./essai
+
+Pour compiler avec les information du débogueur:
+     gcc -g3 -Wall -o essai essai.c 
+
+Pour exécuter sous débogueur:
+     ddd ./essai
+
+Le minimum vital sous "ddd" consiste à pouvoir faire du pas à pas, poser des points
+d'arrêts, consulter le contenu des variables et donner les arguments en ligne de 
+commande.
+
+------
+
+Si ce n'est pas déjà fait, faites un essai de "emacs" pour modifier le fichier
+essai.c. Utilisez la commande suivante:
+
+     emacs essai.c &
+
+Conseils:
+- un seul emacs à la fois.
+- sur une feuille de papier, notez les commandes usuelles.
+Le minimum sous emacs consiste à savoir faire sans la souris l'ouverture d'un fichier, 
+la sauvegarde, les changement de buffer, les copier / coller / décoller, la 
+complétion automatique, recherche incrémentale, etc.
+
+------
+
+Faites un essai de compilation java en ligne de commande avec le programme
+EssaiJava.java également dans ce répertoire. 
+Commande pour compiler:
+   javac EssaiJava.java
+Commande pour exécuter (interpréteur):
+   java EssaiJava
+ 
+------
+
+Vérifier que votre commande "man" est bien configurée (surtout en local bien
+entendu car sauf contre ordre, tous les exercices se feront en local).
+Faire par exemple:
+   man man
+   man bash
+Si la commande man marche, faites un essai de lecture du man sous emacs et notez
+bien la recette ("M-x manual-entry" "bash").
+ 
+Savoir faire de la recherche de texte en mode incrémental sous "emacs" (essayer,
+"C-s", "C-r", ...).
+
+Savoir faire du copier / coller sans la souris sous "emacs" (essayer,
+"C-k", "C-r", "C- ", "C-y", "M-y", "M-w", ...).
+
+Savoir utiliser la complétion automatique (alt /).
+
+Enfin, toujours sous "emacs", utiliser le mode info ("M-x info") pour lire de la
+documentation (commencer par exemple en lisant la documentation d'emacs).
+
+------
+
+Utilisez plusieurs fenêtres shell et faire marcher plusieurs processus en 
+parallèle. Mettre un "top" (et/ou "ps") dans une des fenêtres et essayer de faire
+peiner la machine en la chargeant de travail. Profitez en pour vérifier que les
+variables d'environnement sont bien locales à chaque processus.
+
+------
+
+Pensez à vérifier l'existence d'un ".emacs". Au grand minimum, "emacs" doit se 
+mettre automatiquement en mode "C" en cas d'édition d'un fichier "*.c" et en mode 
+Java en cas d'édition d'un fichier "*.java".
+Note: la documentation d'un mode s'obtient avec "C-hM". 
+
+------
+
+Notez également que "bash" possède pas mal de commandes similaires à "emacs".
+Essayer en particulier, sous "bash" le "C-r" ainsi que la complétion automatique.
+
+------

@@ -1,0 +1,26 @@
+*** ExtendsThread ***
+
+Lancement de plusieurs fils (ou flux) d'exécution (i.e. processus "légers" ou Threads) 
+en Java. Regarder la documentation sur la classe Thread.java et essayer les variantes. 
+Essayer en particulier de donner une priorité différente à chacun des deux flux 
+d'exécution (i.e. les deux Threads).
+
+Rappels pour compiler:
+
+   javac Main.java EssaiThread.java
+
+Pour exécuter:
+
+   java Main
+
+Pour compiler avec le débogueur:
+
+   javac -g Main.java EssaiThread.java
+
+Puis (*):
+
+   jdb Main
+
+
+
+(*) Une fois sous jdb, taper "help" pour avoir la liste des commandes.

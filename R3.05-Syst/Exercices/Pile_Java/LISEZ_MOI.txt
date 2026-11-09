@@ -1,0 +1,8 @@
+*** Pile_Java ***
+Faire cet exercice après l'exercice Pile_C.
+Écrire un programme Java permettant d'estimer la taille de la pile pour un programme
+Java. Comme Java ne possède pas l'arithmétique des pointeurs, on se limite à compter
+le nombre d'appels possibles.
+
+Question: comparez le nombre d'appels (nombre de "stack frames") de Java et de C. Quel
+est le langage permettant d'avoir la plus grande hauteur de pile ?

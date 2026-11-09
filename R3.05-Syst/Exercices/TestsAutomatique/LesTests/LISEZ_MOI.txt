@@ -1,0 +1,6 @@
+
+Ce répertoire contient les tests. Les noms de fichiers avec un "main" sont de la 
+forme "Test*.java".
+
+Chaque test doit être recompilé puis exécuté. Un test correct ne produit aucun
+affichage.

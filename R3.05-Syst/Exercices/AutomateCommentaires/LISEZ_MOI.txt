@@ -1,0 +1,24 @@
+*** AutomateCommentaires ***
+
+On décide d'utiliser un automate permettant d'afficher tous les commentaires écrits
+dans un programme C ou Java. L'automate doit parcourir l'ensemble du fichier et doit
+en même temps procéder à l'affichage de tous les commentaires.
+
+On rappelle qu'il existe deux sortes de commentaires, soit les commentaires sur une
+seule ligne qui commencent par "//" et se terminent en fin de ligne, soit les 
+commentaires sur plusieurs lignes qui commencent par "/*" et se terminent par "*/".
+
+L'automate doit procéder à la lecture du fichier caractère par caractère. Il doit 
+afficher uniquement les commentaires et inclure dans l'affichage les marqueurs de 
+début et de fin de commentaires (i.e. "//", "/*" et "*/").
+
+----
+
+Faire le dessin de l'automate et programmez ensuite cet automate en utilisant les
+conventions habituelles (*).
+
+Pour le passage à la programmation en C, utilisez les informations contenues dans
+le squelette de programme "commentaires.c" fourni.
+
+(*) Voire les conventions vues dans l'exercice AutomateString2Int.
+

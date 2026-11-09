@@ -1,0 +1,16 @@
+*** ThreadsDeadLock ***
+
+Le programme donné dans ce répertoire est un exemple d'interblocage (deadlock in
+english) entre deux fils d'exécution. En effet, si tout ce passe comme prévu(*)
+l'exécution du programme finit par se bloquer (l'affichage s'arrète).
+
+Essayer le code fournit et constater que ce code finit bien par se bloquer au bout
+d'un temps d'exécution assez variable.
+
+----
+
+Exercice: Le code donné est déjà relativement petit. Essayez de le réduire encore 
+plus en faisant également en sorte que l'interblocage se produise le plus 
+rapidement et le plus surement possible.
+
+(*) avec les threads on ne sait jamais !

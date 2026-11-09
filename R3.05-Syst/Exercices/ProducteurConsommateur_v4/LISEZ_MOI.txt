@@ -1,0 +1,50 @@
+*** ProducteurConsommateur_v4 ***
+
+Programmez maintenant l'exemple du producteur consommateur en C en utilisant
+deux processus qui communiquent à l'aide d'un pipe nommé.
+
+Indications: 
+
+Il est plus simple de ne faire qu'un seul fichier. Le main commencera par la création 
+du pipe, puis, à l'aide d'un fork() au lancement du producteur/consommateur.
+
+Pour avoir le même affichage que dans les version précédentes, on peut déclarer
+pour le producteur la chaîne de caractères suivante:
+   char* ligne = "ABCDEFGHIJKLMNOPQRSTUVWXYZ-abcdefghijklmnopqrstuvwxyz-0123456789-COUCOU\n";
+
+
+La fonction C mkfifo permet de créer le tube avant le lancement du consommateur.
+Ainsi l'appel suivant permet de créer le tube dans "/tmp/tube" avec des droits
+suffisants:
+   mkfifo("/tmp/tube", S_IRWXU);
+ 
+
+Dans dans le producteur, le tube est ouvert en écriture seule avec:
+    pipe = open("/tmp/tube", O_WRONLY);
+
+Toujours dans le producteur, l'écriture se fait avec la fonction write utilisée
+par exemple comme ceci:
+      write(pipe, &(ligne[i]), 1);
+
+Afin d'indiquer la fin de la transmission dans le tube, le producteur peut par 
+exemple envoyer la constante EOF (toujours en utilisant la fonction write).
+
+Dans le consommateur, le tube est ouvert en lecture seule avec:
+    pipe = open(path, O_RDONLY);
+
+Le consommateur peut lire les caractères un par un dans une variable de type char
+avec:
+    read(pipe, &c, 1);
+
+
+Enfin, pensez également à effacer "/tmp/tube" à la fin de l'exécution du 
+consommateur. On pourra pour cela utiliser la fonction C unlink.
+
+
+Pour plus d'informations, vous pouvez consulter les manuels suivants:
+    man 3 mkfifo
+    man 2 open
+    man 2 read
+    man 2 unlink
+
+

@@ -1,0 +1,8 @@
+*** Memo_FindGrepSortHead ***
+
+Question 1: En vous aidant des documentations disponibles, décrivez précisément 
+ce que fait la commande suivante:
+
+find ~ -type f -printf "%b %h/%f\n" 2> /dev/null | grep -v '.git' | sort -n -r | head -n 4
+
+Question 2: Estimez le nombre de processus exécutés par la commande précédente.

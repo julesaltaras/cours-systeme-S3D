@@ -1,0 +1,46 @@
+*** volatile_Java ***
+
+Le but de cette manipulation consiste à essayer de mettre en évidence, sur un exemple
+le plus petit possible, l'impact du mot clef "volatile" de Java.
+
+L'usage et l'effet du mot clef "volatile" est probablement ce qui est le moins bien 
+documenté pour le langage Java. On trouve également pas mal d'erreurs et 
+d'incompréhensions concernant le mot clef "volatile" dans les forums et dans les
+documentations.
+
+Pour simplifier, le mot clef "volatile" sert à indiquer au compilateur Java de bien 
+faire attention au caractère potentiellement "volatile" d'un attribut ou d'une 
+variable. En effet, par défaut, le compilateur Java suppose que l'exécution est 
+purement séquentielle: sans concurrence et avec un seul fil/thread d'exécution. 
+Toujours par défaut, c'est-à-dire sans le mot clef "volatile", le compilateur considère
+également que la mémoire du programme n'est jamais perturbée par une interruption
+(ou intervention) extérieure. Sans ces suppositions, un grand nombre d'optimisations
+sont impossibles.
+
+Pour compliquer les choses, le mot clef "volatile" est parfois pris en compte non 
+seulement par le compilateur, mais aussi par la machine virtuelle d'exécution. Bref, 
+il est possible que la manipulation proposée dans le fichier "TestVolatile.java"
+ne marche pas correctement.
+
+Si la manipulation qui est proposé dans le fichier "TestVolatile.java" marche, alors
+une exécution sans modification provoquera un affichage du genre:
+
+   $ java TestVolatile
+   essayeEncore vaut maintenant false...
+   Thread fini. compteur=785432795
+   $
+
+Sans le mot clef "volatile", l'exécution du programme "TestVolatile.java", doit
+normalement se bloquer (i.e. pas de retour du prompt) et provoquer un affichage 
+du genre:
+
+   $ java TestVolatile
+   essayeEncore vaut maintenant false...
+
+Si vous n'obtenez pas ce qui est décrit précédemment, prévenez votre enseignant et 
+aidez le (lui aussi) à comprendre ce qui se passe. En principe, la situation doit 
+se bloquer sans le mot clef "volatile".
+
+Dans un monde idéal, le programme "TestVolatile.java" ne devrait jamais se bloquer, 
+avec ou sans le mot clef "volatile"... mais les compilateurs sont encore très loin 
+d'être parfaits. Comment est votre compilateur/interpréteur Java ?

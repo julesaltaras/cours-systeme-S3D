@@ -1,0 +1,21 @@
+*** CompteurProcessus ***
+
+Exercice: En utilisant le fichier de commandes "dollardollar.sh", comparez le
+nombre de processus lors de l'exécution d'une boucle "bash" de la forme:
+
+#! /bin/bash
+y=5000
+while [ $y -gt 0 ]
+do
+    y=$(expr $y - 1)
+done
+
+
+avec une boucle bash de la forme:
+
+#! /bin/bash
+y=5000
+while [ $y -gt 0 ]
+do
+    ((y--))
+done

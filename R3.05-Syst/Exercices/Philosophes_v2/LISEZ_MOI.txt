@@ -1,0 +1,77 @@
+*** Threads_Philosophes_v2 ***
+
+En prenant comme point de départ le résultat de l'exercice "Threads_Philosophes_v1", 
+reprendre le problème en luttant contre l'attente active grâce aux méthodes "wait()"
+et "notify()".
+
+En effet, en utilisant les méthodes "wait()" et "notify()", il est possible d'aboutir
+à un résultat plus satisfaisant qu'avec un simple "yield()".
+Les méthodes "wait()" et "notify()" sont héritées de la classe Object.
+
+Principe de fonctionnement des méthodes de la famille "wait()" / "notify()".
+
+Un appel "x.wait()" libère le moniteur sur "x" et met le thread en attente d'un
+appel "x.notify()" effectué par un autre thread.
+Le fait de libérer le moniteur permet à un autre thread de franchir le bloc 
+synchronized sur "x". Notons que le thread qui est maintenant endormis par son
+appel à "x.wait()" compte sur un autre thread pour son réveil grâce à un "x.notify()".
+
+Très logiquement, un appel de la méthode "x.wait()" n'a de sens que si le thread qui
+exécute cet appel est à l'intérieur d'un bloc synchronized concernant l'objet "x".
+Dans le cas contraire, l'appel échoue avec l'exception IllegalMonitorStateException.
+Si l'appel est correct, le moniteur (i.e. le verrou) de l'objet "x" est libéré et 
+le thread est mis en attente. L'attente dure jusqu'à ce qu'un autre thread exécute
+un appel "x.notify()".
+
+Comme précédemment, un appel de la méthode "x.notify()" n'a de sens que si le thread 
+qui exécute cet appel est à l'intérieur d'un bloc synchronized concernant l'objet "x".
+Comme la documentation Java n'est pas très claire sur l'instant précis du réveil, une
+bonne pratique de programmation consiste à mettre l'appel "x.notify()" près de la 
+sortie du bloc synchronized concernant "x".
+
+Il existe une variante de "x.wait()" avec un paramètre permettant de fixer un timeout 
+dans le but de limiter le temps d'attente. En effet, le redémarrage du thread qui a 
+exécuté "x.wait()" dépends des autres threads. En cas d'absence d'appel "x.notify()"
+par un autre thread, on risque une attente prolongée (blocage complet si pas de timeout). 
+
+Il existe également une variante de "x.notify()" nommée "x.notifyAll()". Cette deuxième
+méthode provoque le réveil de tous les threads en attente sur "x".
+Notons qu'un appel "x.notify()" ne relance qu'un seul thread (le choix de ce thread étant
+quasiment aléatoire).
+
+Inutile d'indiquez que la programmation avec les threads est très délicate et c'est 
+encore plus complexe (et risqué) avec "wait" / "notify". Gardez à l'esprit qu'un 
+"x.notify()" qui arrive avant que le philosophe concerné ne soit entré dans "x.wait()" se 
+perd dans la nature...
+
+Enfin, pour compliquer le tout, il faut parfois utiliser le mot clef "volatile" pour 
+forcer le compilateur java à bien recalculer la valeur d'un attribut partagé.
+
+Plusieurs solutions sont possibles :
+
+SOLUTION 1 : On met un verrou sur la classe Baguette. Un philosophe prend une baguette si elle est
+libre et attend la seconde avec le risque d'interblocage quand chaque philosophe possède une
+baguette et attend l'autre.
+
+SOLUTION 2 : On met un verrou sur la classe Baguette, et on définit la fonction
+ void prendreDeux (Philosophe p, Baguette baguetteDroite)
+dans laquelle le philosophe p veut prendre les 2 baguettes
+
+SOLUTION 3 : Au lieu de définir une classe Baguette avec un verrou, on définit une classe
+Baguettes (au pluriel) possédant un seul verrou et qui regroupe l'ensemble des baguettes.
+
+public class Baguettes {
+    boolean[] lesBaguettes;   // tableau d'occupation des fourchettes : false = occupée
+    int taille;   //  nb de baguettes
+...
+}
+
+ainsi que les méthodes prendre et deposer : 
+public synchronized void prendre(int no) { ... }
+public synchronized void deposer(int no) { ... } 
+
+Par convention, un philosophe a la baguette "no" à gauche et "no+1" à droite. Les baguettes sont 
+numérotées de 0 à taille-1. Tout comme les philosophes.
+
+
+Bonne chance à tous !

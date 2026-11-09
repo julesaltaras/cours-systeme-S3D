@@ -1,0 +1,25 @@
+**** synchronized_PartageString ***
+
+Avec les Threads, les véritables problèmes commencent quand un objet dans le tas est 
+partagé par plusieurs Threads.
+
+En effet, il ne faut jamais perdre de vue que chaque Thread dispose de sa propre 
+pile mais qu'il n'y a qu'un seul et unique espace pour le tas (i.e. tous les threads
+partagent l'unique tas).
+La seule différence entre les processus et les threads, c'est justement le partage
+du tas (chaque processus possède son propre tas).
+
+----
+
+Manipulation: Si le paramêtre d'attente active qui est dans la class ObjetPartage 
+est correctement réglé, les exécutions doivent donner des affichages différents.
+
+Si tous se passait bien, on devrait donc obtenir très exactement 5 fois le caractère 
+"A" et 5 fois le caractère "B" dans le dernier affichage.
+
+----
+
+Exercice: Proposer une solution pour que la méthode "concat" de la classe ObjetPartage.java 
+puisse s'exécuter sans interruption. En effet, si cette méthode n'est pas interrompue 
+par un changement de contexte, on doit obtenir un affichage final correct (i.e. un 
+mélange de cinq "A" et de cinq "B").

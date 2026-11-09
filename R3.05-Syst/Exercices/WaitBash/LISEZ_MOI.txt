@@ -1,0 +1,7 @@
+*** WaitBash ***
+
+Bash propose une primitive wait.
+
+Exercice: Après avoir essayé le script "wait-bash.sh", proposez une nouvelle 
+version du script "ForkGcc/main-compile.sh".
+ 

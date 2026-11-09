@@ -1,0 +1,26 @@
+**** synchronized_PartageCompteur ***
+
+Avec les Threads, les véritables problèmes commencent quand un objet dans le tas est 
+partagé par plusieurs Threads.
+
+En effet, il ne faut jamais perdre de vue que chaque Thread dispose de sa propre 
+pile mais qu'il n'y a qu'un seul et unique espace pour le tas (i.e. tous les threads
+partagent l'unique tas).
+La seule différence entre les processus et les threads, c'est justement le partage
+du tas (chaque processus possède son propre tas).
+
+Observez bien le programme donné et exécutez le plusieurs fois. En principe(*), avec 
+le programme donné, vous devez pouvoir obtenir des exécution différentes.
+ 
+----
+
+Exercice: Proposer une solution pour que le Compteur ne soit pas décrémenté plus de fois
+que sa valeur initiale.
+
+---------
+
+(*) Si le programme donné non modifié affiche toujours le même nombre de lignes, 
+essayez encore plusieurs éxécutions. Si vous avez toujours le même nombre de lignes,
+essayez de modifier la valeur initiale du compteur partagé en mémoire. Sinon, si
+vous avez toujours un nombre de lignes affichées qui reste constant, prévénez votre
+enseignant pour trouver le problème.

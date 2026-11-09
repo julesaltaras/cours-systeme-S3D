@@ -1,0 +1,16 @@
+*** RegExpIPv4 ***
+
+L'automate donné dans "automate_ipv4.pdf" accepte toutes les adresses au format IPv4.
+Enfin presque, car cet automate accepte aussi des adresses plus courtes ou plus 
+longues. Ne cherchez pas à corriger le schéma.
+
+En vous aidant du fichier "fichier_test.txt", trouvez une expression régulière pour la 
+commande "grep -E" strictement équivalente au schéma de l'automate "automate_ipv4.pdf".
+
+Une réponse correcte est une réponse qui ramasse toute les lignes "OUI" du 
+"fichier_test.txt" sans l'option -v de grep, et qui ramasse toutes les lignes "NON"
+avec l'option -v de grep.
+
+Vous pouvez également utiliser la sortie de la commande "ifconfig" pour tester plus 
+complètement votre expression régulière.
+ 

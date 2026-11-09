@@ -1,0 +1,64 @@
+*** TestsAutomatique ***
+
+Objectif: écrire un script pour automatiser l'exécution de programmes de test.
+
+Le répertoire "LesTests" contient quelques programmes de tests écrits avec le 
+langage Java. Chaque programme de test a un nom qui commence par "Test" (i.e. tous
+les fichiers "Test*.java" du répertoire "LesTests" sont des programmes de tests).
+
+Pour faire toutes les vérifications, chaque programme de test doit être recompilé 
+puis exécuté. Il faut également prendre soin d'effacer à chaque fois les fichiers 
+construits par le compilateur Java. Par exemple, pour le fichier 
+"TestPoint.java" il faut faire:
+
+   javac TestPoint.java
+   java TestPoint
+   /bin/rm -f *.class
+
+Manipulation 1: Commentez une ligne dans la définition de "translate" de la classe
+"Point.java" et constatez que le problème est bien détecté lors de l'exécution du 
+programme "TestPoint.java".
+
+----
+
+Manipulation 2: Selon la configuration de votre interpréteur/compilateur Java, 
+l'erreur est soit détectée par l'instruction "assert", soit par l'appel sur null 
+qui est aussi dans "isTrue". Essayer les deux configurations.
+
+----
+
+Rappel: Selon la norme, en Java un int est représenté en complément à deux sur 32
+bits, soit, une représentation de l'intervalle [-2147483648, 2147483647]. Si votre
+compilateur/interpréteur Java est correct, un débordement doit donc se produire 
+quand on sort de cet intervalle.
+
+Exercice 1: Corrigez le test de débordement des int en modifiant le fichier 
+"TestIntOverflow.java".
+
+----
+
+Exercice 2: Sachant que le bon résultat pour factorielle 20 est 
+2432902008176640000, complétez le test "TestFactoriel.java" afin d'ajouter la 
+vérification du calcul de factorielle 20 avec la fonction "factorielle_v2"
+qui utilise le type "long".
+
+----
+
+Rappel: L'opération de comparaison (x == y) compare les adresses des deux 
+références (un seul bytecode exécuté). Cette comparaison est plus forte et plus 
+rapide que (x.equals(y)). En principe, le fichier TestString.java montre un 
+comportement très étrange du compilateur Java pour le cas particulier de la 
+classe String. 
+
+Exercice 3: Corrigez le fichier TestString.java pour que le test passe sans 
+erreur. 
+
+----
+
+Exercice 4: Écrire un script `sh' (i.e. bash) chargé de recompiler puis de lancer
+l'exécution de tous les tests. Le script doit avoir au moins un argument qui 
+correspond au chemin du répertoires où se trouvent les tests.
+Sans l'option "-v", le script n'affiche rien tant qu'il n'y a pas d'erreur.
+Avec l'option "-v", le script indique ce qu'il est en train de faire (i.e. le
+nom du programme qu'il compile ou le nom du programme qu'il exécute).
+

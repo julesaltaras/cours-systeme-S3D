@@ -1,0 +1,5 @@
+*** RegExpFlottants ***
+
+Exercice: Ecrire une expression régulière pour la commande "grep" permettant de reconnaître 
+tous les flottants acceptés par le compilateur javac (cf. exercice AutomateFlottantsJava).
+

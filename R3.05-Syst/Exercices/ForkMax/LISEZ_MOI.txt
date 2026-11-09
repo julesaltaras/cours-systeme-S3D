@@ -1,0 +1,24 @@
+*** ForkMax ***
+
+Note: faire cet exercice en local et non pas sur le serveur commun "charlemagne".
+
+Pour faire cet exercice, il vous faudra tenir compte des trois résultats possibles
+de la fonction C "fork()":
+ - un résultat 0 indique que "fork" a marché et que vous êtes dans le processus fils,
+ - un résultat positif indique que le "fork" a marché et que vous êtes dans le père,
+ - enfin, un résultat négatif indique que le "fork" n'a pas pu être effectué et que 
+vous êtes donc resté dans le même processus.
+
+Exercice: Écrire un programme permettant de vérifier que le nombre de processus
+pour un utilisateur donné est effectivement limité à une certaine valeur, soit
+à cause d'une limitation volontaire du système(*), soit parce que le machine ou
+le système de fenêtrage se plante pour cause de manque de ressources(**).
+Écrire un programme permettant d'estimer le nombre de processus maximal supporté
+par la machine. En général, on finit par écrouler sa machine sous le poids de la
+charge et il n'est pas rare de devoir redémarrer complètement la machine.
+
+----
+(*) Sous bash, la commande "ulimit -a" indique s'il existe des limitations.
+
+(**) Selon le système de fenêtrage que vous utilisez (gnome, unity, apple, ...),
+les résultats sont très variables.

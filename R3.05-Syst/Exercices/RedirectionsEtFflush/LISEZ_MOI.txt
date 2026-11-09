@@ -1,0 +1,55 @@
+*** RedirectionsEtFflush ***
+
+Objectifs: comprendre les redirection "stdin" / "stdout" / "stderr" ainsi que les 
+étrangetés du "fflush".
+
+Rappels: par défaut, la sortie standard ("stdout" en C) et la sortie d'erreur 
+("stderr" en C) sont envoyées sur l'écran. Ce deux sorties peuvent donc 
+s'entremêler.
+
+----
+
+Lire, compiler et exécuter le programme "essai-fflush.c" et constatez que les 1 et
+les 2 ne s'entremêlent pas comme on aurait naïvement pu le penser.
+
+Il s'agit là d'un exemple du phénomène de mémoire tampon. En informatique, une mémoire
+tampon, couramment désignée par le terme anglais "buffer", est une zone de mémoire 
+vive ou de disque utilisée pour entreposer temporairement des données, notamment 
+entre deux processus ou matériels ne travaillant pas au même rythme. Ainsi, les 
+données envoyées vers un périphérique (externe) sont le plus souvent stockées dans 
+des mémoires tampon en attente de leur envoi effectif pour épargner à l’ordinateur 
+le contretemps dû à la différence de débits entre le microprocesseur interne et 
+les différents périphériques souvent lents. De même, les données reçues de l'extérieur 
+sont le plus souvent rassemblées dans des tampons en attente de leur traitement par 
+l'ordinateur (pour des raisons d'efficacité, et aussi pour éviter qu'une réception 
+de données trop rapprochées fasse que certaines, non traitées, ne soient perdues).
+
+Exercice 1: Dans le programme "essai-fflush.c", ajouter des appels à la fonction 
+"fflush" afin que les 1 et les 2 s'entremêlent exactement dans l'ordre d'exécution.
+
+----
+
+Question 1: Quel est le danger pour un programmeur qui débogue avec des print ?
+
+----
+
+Manipulation avec le programme "essai_stdin.c". Dans la suite on suppose que le nom 
+de l'exécutable est essai_stdin (i.e. "gcc -o essai_stdin essai_stdin.c").
+
+Vérifier et comprendre ce qui se passe dans chacun des cas suivant:
+   echo "hop" | ./essai_stdin
+   echo "hop" | ./essai_stdin > f
+   echo "hop" | ./essai_stdin >& f
+   echo "hop" | ./essai_stdin 2> f
+   echo "hop" | ./essai_stdin 1> f
+   echo "hop" | ./essai_stdin 1>f 2>g
+   echo "hop" | ./essai_stdin >> f
+
+Regarder se qui se passe quand on lance le programme sans avoir redirigé stdin,
+soit avec la commande:
+   ./essai_stdin
+
+Notez aussi que EOF est obtenu en tapant Ctrl D au clavier.
+
+Exercice 2: En utilisant le fichier EssaiFlush.java, essayer de comprendre la politique
+utilisée en Java pour les flux System.out et System.err

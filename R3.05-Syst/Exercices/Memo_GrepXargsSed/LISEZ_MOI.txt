@@ -1,0 +1,7 @@
+*** Memo_GrepXargsSed ***
+
+Exercice: Attention, la commande suivante risque de modifier vos fichiers. Décrivez précisément 
+ce que fait cette commande:
+
+ancien="xVdHff36"; grep -l "$ancien" . -R | grep -v '.git' | xargs sed -i s/$ancien/jjggkk/g
+

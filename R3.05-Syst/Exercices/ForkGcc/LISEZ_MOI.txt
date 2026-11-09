@@ -1,0 +1,57 @@
+*** ForkGcc ***
+
+Objectif: écrire un programme C chargé d'exécuter en parallèle plusieurs commandes, 
+sauf la dernière, qui ne doit être exécutée que lorsque toutes les précédentes sont
+terminées.
+
+Le programme se nomme "parallelise" et il prend 2 paramètres: un entier qui indique 
+le niveau de parallélisme souhaité et, comme deuxième argument, un chemin vers le
+fichier qui contient la liste des commandes à exécuter.
+
+Le niveau de parallélisme donné au programme "parallelise" indique le nombre maximum
+de commandes pouvant être exécutées en parallèle. Si le fichier fait N lignes, soit
+N commandes, on peut au maximum exécuter les N-1 premières commandes en parallèle.
+La N-ième ligne qui correspond à la dernière commande, ne sera exécutée que lorsque 
+toutes les précédentes sont terminées. Au minimum, le niveau de parallélisme est 1,
+ce qui correspond à une exécution séquentielle du fichier de commandes.
+
+Prenons comme premier exemple le cas de la compilation d'un gros logiciel. Le fichier 
+de commandes "main-compile.sh" permet de construire séquentiellement un gros logiciel 
+écrit en C. Le logiciel en question est composé de 31 fichiers C (30 parties plus 
+le main) devant être agglomérés afin de produire l'exécutable final (dernière 
+ligne de commande). Chaque ligne est un appel au compilateur gcc et seule la dernière
+ligne doit être exécutée lorsque les lignes précédentes ont été exécutées (la dernière 
+ligne correspond à l'édition de liens).
+
+Si on lance le script "main-compile.sh", la compilation des différentes partie se 
+fait séquentiellement alors qu'il serait possible d'effectuer en parallèle toutes 
+les commandes du style "gcc -c ...". Bien entendu, pour exécuter la dernière ligne 
+"gcc -o main ...",  il faut que toutes les commandes "gcc -c ..." soient terminées.
+
+Ainsi, pour compiler plus rapidement le gros logiciel, on peut lancer la commande 
+suivante pour compiler 4 parties en même temps:
+
+  parallelise 4 main-compile.sh
+
+On peut bien sûr augmenter le niveau de parallelisme en laçant 10 "gcc -c ..." à
+la fois avec la commande suivante:
+
+  parallelise 10 main-compile.sh
+
+Notons que l'appel suivant équivaut à une exécution séquentielle de "main-compile.sh":
+
+  parallelise 1 main-compile.sh
+
+Pour mieux constater l'effet du parallélisme, vous pourrez tester votre programme 
+"parallelise.c" en utilisant le script "ouf.sh":
+
+  parallelise 1  ouf.sh
+
+ou bien:
+
+  parallelise 30 ouf.sh
+
+Le programme "parallelise.c" donné est incomplet, mais il contient déjà tous les 
+ingrédients nécessaires.
+  
+Exercice: Complétez le programme "parallelise.c".

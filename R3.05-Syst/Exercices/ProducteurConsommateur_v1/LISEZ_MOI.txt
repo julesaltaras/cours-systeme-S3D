@@ -1,0 +1,66 @@
+*** ProducteurConsommateur_v1 ***
+
+Le modèle producteur-consommateur est un exemple classique de synchronisation de
+ressources, qui peut s'envisager dans différents contextes de programmation 
+concurrente, notamment en environnement multi-thread. Il s'agit de partager entre 
+deux tâches, le producteur et le consommateur, une zone de mémoire tampon 
+utilisée comme une file. 
+Le producteur génère un élément de données, l'enfile sur la file et recommence;
+simultanément, le consommateur retire les données de la file d'attente.
+
+Le but de cet exercice consiste à mettre en place en Java un système 
+Un-Producteur / Un-Consommateur. Plus exactement, avec un thread producteur et un
+thread consommateur.
+
+Le programme principal est donné: "Main.java" ainsi que le code du thread
+"Producteur.java", du thread "Consommateur.java" et aussi le code de la zone de 
+transfert "DepotCommun.java".
+
+Quand tout se passe bien, le texte envoyé par le producteur doit bien sûr arriver 
+dans le bon ordre:
+
+ABCDEFGHIJKLMNOPQRSTUVWXYZ-abcdefghijklmnopqrstuvwxyz-0123456789-COUCOU
+ABCDEFGHIJKLMNOPQRSTUVWXYZ-abcdefghijklmnopqrstuvwxyz-0123456789-COUCOU
+ABCDEFGHIJKLMNOPQRSTUVWXYZ-abcdefghiVWXYZ-pqrstuvwxyz-0123456789-COUCOU
+ABCDEFGHIJKLMNOPQRSTUVWXYZ-abcdefghiVWXYZ-pqrstuvwxyz-0123456789-COUCOU
+...
+...
+
+----
+
+Exercice 1: Lisez, compilez et essayez le programme "Main.java". Constatez qu'il 
+existe bien un problème pour certaines exécutions: tous les caractères envoyés 
+par le producteur ne sont pas toujours reçus correctement dans le bon ordre par
+le consommateur. Parfois même, l'affichage est complètement décalé. Parfois même, 
+selon la version de Java, le code donné semble se bloquer complètement(*).
+
+----
+
+Exercice 2: Sans utiliser pour l'instant les blocs de synchronisation (i.e. sans
+utiliser le mot clef "synchronized"), essayer d'améliorer le code en déplaçant des 
+instructions dans les méthodes "prendre" et "deposer" de la classe 
+DepotCommun.java. Est-il possible de corriger complètement les problèmes ?
+
+----
+
+Exercice 3: Corriger le problème en utilisant le mot clef "synchronized". Proposez 
+plusieurs corrections possibles. Une possibilité consiste à ne modifier que la 
+classe DepotCommun.java. Une autre possibilité consiste à ne pas modifier la 
+classe DepotCommun.java mais à modifier Producteur.java et Consommateur.java.
+
+----
+
+Exercice 4: On peut constater l'énorme temps de calcul gaspillé par de 
+"l'attente active". Essayer d'améliorer légèrement les choses en libérant le 
+processeur au bon moment grâce à la méthode "Thread.yield()".
+
+---------
+
+(*) Si le code non modifié se bloque, modifiez la déclaration de l'attribut "dispo"
+de la classe DepotCommun.java de la façon suivante:
+
+    private volatile int dispo; // Nombre de char disponibles pour le Consommateur.
+
+Le mot clef "volatile" indique au compilateur Java de bien recalculer à chaque
+utilisation la bonne valeur de l'attribut "dispo". En fait, par défaut, il semble
+que les compilateurs Java considèrent que le code n'utilise pas les threads...

@@ -1,0 +1,8 @@
+*** ForkBomb ***
+
+Pour vous amuser, vous pouvez lancer sur VOTRE PROPRE MACHINE
+le programme forkbomb.c, qui comme son nom l'indique, risque fort
+de saturer la machine en question.
+
+Question: faire un schéma permettant de se faire une idée assez
+précise de l'arbre des processus pour le code forkbomb.c.

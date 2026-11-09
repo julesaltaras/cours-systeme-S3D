@@ -1,0 +1,10 @@
+*** SectionCritique ***
+
+En programmation concurrente, une section critique est une portion de code dans 
+laquelle il doit être garanti qu'il n'y aura jamais plus d'un thread simultanément.
+Sachant qu'un bloc de synchronisation Java (i.e. bloc "synchronized") concerne
+toujours un objet, donnez un exemple Java permettant de réaliser une section
+critique à l'intérieur d'un bloc de synchronisation.
+
+Pour donner votre réponse, vous pouvez utiliser le code fourni en essayant de 
+faire en sorte que bloc synchronized de "laMethode" soit en section critique.

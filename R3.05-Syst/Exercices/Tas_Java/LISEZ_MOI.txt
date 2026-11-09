@@ -1,0 +1,19 @@
+Objectif: prendre conscience du tas et du GC(*) depuis le langage Java.
+
+Constatez que le programme donné ne fait pas déborder le tas. Lancez par exemple
+le programme donné dans une fenêtre et la commande top dans une autre.
+
+Exercice: Ecrire un programme java afin de ranger un maximum de "double" dans le tas 
+sans utiliser aucune classe de la bibliothèque.
+Modifiez par exemple le programme donné.
+
+----
+
+Question: comparez le nombre de "double" que vous arrivez à placer dans le tas
+avec la version C. Lequel des deux langage permet de ranger plus de "double"
+dans le tas ?
+
+----
+
+(*) Attention, le langage Java implique l'utilisation du ramasse-miettes,
+GC (i.e. Garbage Collector).

@@ -1,0 +1,10 @@
+*** RegExpMotLong ***
+
+En vous inspirant de la commande suivante:
+
+man grep | grep --color=always -E '[1-8]{2,5}'
+
+
+Donnez une commande permettant d'afficher le (ou les) plus longs mot(s)
+dans la documentation de "bash".
+

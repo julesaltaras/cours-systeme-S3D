@@ -1,0 +1,52 @@
+*** Piscine ***
+
+Simulation d'une piscine
+
+Exercice 1
+
+Un centre aquatique possède N places (N donnée) représentées par les N casiers qu'un baigneur
+peut prendre. Chaque baigneur est représenté par un thread qui prend
+un casier, se baigne (représenté par la méthode sleep(Math.random() * 1000)) et sort en
+libérant son casier. 
+
+Ecrire la classe Piscine qui représente le dépôt commun et qui possède les méthodes
+PrendreCasier et RendreCasier. Le numéro du casier pris ou libéré est sans importance.
+
+Ecrire le Thread Baigneur
+
+Rassembler l'ensemble autour d'un Main
+
+Exercice 2
+
+La piscine est régulièrement nettoyée par le service d'entretien qu'on représentera aussi
+par un Thread exécutant l'algorithme suivant:
+
+1) Attendre qu'il n'y ait plus de baigneur
+
+2) Prendre le tablier
+
+3) nettoyer (représenté par la méthode sleep(Math.random() * 1000))
+
+4) rendre le tablier
+
+Donnez deux solutions :
+
+SOLUTION 1: Coalition des baigneurs contre l'entretien. Les baigneurs continuent d'entrer 
+même si l'Entretien s'est manifesté. L'entretien ne s'effectuera que lorsque tous les baigneurs
+seront sortis, c'est à dire peut être jamais.
+
+SOLUTION 2 : Dès que l'Entretien se manifeste, il bloque l'arrivée des baigneurs qui attendront
+derrière lui la fin du nettoyage. L'Entretien attend la sortie du dernier baigneur pour travailler.
+
+Quelques éléments pour vous aider
+
+Le processus Entretien a besoin d'un Tablier pour faire son travail, tout comme le Baigneur
+a besoin d'un casier. Il n'y qu'un tablier et un seul processus Entretien.
+Pour s'assurer que l'entretien ne soit pas fait quand il y a des baigneurs dans la piscine,
+le premier baigneur enferme le tablier (en posant le verrou sur cette classe) ; le soin au dernier
+baigneur de dévérouiller le tablier. Ecrire cette classe Tablier qui permet de signaler que
+l'entretien est en cours.
+
+Dans la solution 2, il faut introduire une nouvelle classe BonDeCommande possédant un verrou en plus
+de la classe Tablier. Cette classe permet de signaler que l'entretien est programmé mais pas
+encore en cours.

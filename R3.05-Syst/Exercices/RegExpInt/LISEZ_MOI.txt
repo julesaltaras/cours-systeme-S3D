@@ -1,0 +1,30 @@
+*** RegExpInt ***
+
+Exercice 1: Décrivez précisément ce que fait la commande suivante:
+
+grep --no-filename --color=always -o -E '[+-] *[0-9]{19,} +' -R /usr/include
+
+----
+
+Il est toujours possible de trouver une expression régulière qui reconnaît le même
+motif qu'un automate donné. L'inverse est également vrai: il est toujours possible
+de dessiner un automate qui reconnaît le même motif qu'une expression régulière 
+donnée.
+
+Les langages rationnels ou langages réguliers ou encore langages reconnaissables 
+peuvent être décrits de plusieurs façons équivalentes:
+ - ce sont les langages décrits par les expressions régulières ou rationnelles, d'où
+le nom de langages réguliers ;
+- ce sont les langages obtenus, à partir des lettres et de l'ensemble vide, par les 
+opérations rationnelles, à savoir l'union, le produit et l'étoile (ou fermeture de 
+Kleene), d'où le nom de langages rationnels ;
+- ce sont les langages reconnus par des automates finis, d'où le nom de langages 
+reconnaissables.
+
+----
+
+Exercice 2: Donnez une expression régulière permettant de reconnaître le même motif
+que celui de l'automate de l'exercice AutomateString2Int. Pour les séparateurs, en 
+plus de l'espace, on souhaite aussi accepter les tabulations.
+
+

@@ -1,0 +1,9 @@
+*** ImplementsRunnable ***
+
+Ceci est une variante de "ExtendsThread" qui montre la deuxième forme permettant 
+de créer un Thread en Java ("implements Runnable" à la place de "extends Thread").
+
+
+   javac -g Main.java EssaiThread.java
+
+   jdb Main

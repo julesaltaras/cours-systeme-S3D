@@ -1,0 +1,7 @@
+*** AutomateFlottantsJava ***
+
+Dessiner sur le papier un automate capable de reconnaître les flottants tels qu'ils 
+sont acceptés par le compilateur Java (regarder le code "Flottants.java" pour avoir 
+des exemples de notations acceptées).
+Ne pas coder l'automate correspondant, juste faire le schéma.
+

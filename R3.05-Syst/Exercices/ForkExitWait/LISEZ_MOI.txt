@@ -1,0 +1,16 @@
+*** ForkExitWait ***
+
+Lire, essayez et comprendre dans l'ordre cette suite de programmes.
+
+ZOMBIE (ou mort vivant)
+=======================
+Ouvrir deux fenêtres terminal.
+1) Compiler progr5.c et lancer prog5 dans
+une fenêtre par la commande :
+gcc progr5.c -o progr5
+
+2) dans l'autre fenêtre, lancer la commande
+ps -C progr5
+
+Vous apprendrez comment Unix appelle les zombies.
+

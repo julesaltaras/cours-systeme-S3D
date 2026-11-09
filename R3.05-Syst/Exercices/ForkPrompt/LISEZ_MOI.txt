@@ -1,0 +1,26 @@
+*** ForkPrompt ***
+
+Note: tous les exercices sur "fork" sont à faire en local (i.e. pas sur le serveur 
+commun "charlemagne").
+
+Objectifs: découverte de "fork" et constater l'entrelacement possible des exécutions 
+entre deux processus.
+
+
+Échauffement 1: Commencez par jeter un oeil sur le manuel de la fonction C "fork" 
+("man fork") puis regardez attentivement le programme C "version1.c". Essayez de 
+l'exécuter afin de comprendre ce programme.
+
+Échauffement 2: lire et essayer le programme "version2.c". En principe, ce programme 
+"version2.c" doit donner des traces d'exécutions différentes. Comme le résultat dépend 
+de la puissance et de la charge de votre ordinateur; si la trace d'exécution ne change 
+jamais, faites le réglage de la constante MAX_LOOP. Vous devez pouvoir constater des 
+traces d'exécution différentes.
+Jouez avec la valeur de MAX_LOOP pour bien visualiser la granularité de l'entrelacement 
+entre les deux processus.
+
+Question 1: dans certains cas, votre prompt Unix n'est pas la dernière chose
+affichée! Quelle est l'explication de ce phénomène?
+
+Question 2: est-il possible d'avoir des "P" après le prompt?
+

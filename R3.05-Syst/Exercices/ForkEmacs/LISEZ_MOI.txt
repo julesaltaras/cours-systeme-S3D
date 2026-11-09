@@ -1,0 +1,26 @@
+*** ForkEmacs ***
+
+La fonction C "system" permet de lancer n'importe quelle commande à partir d'un 
+programme C. La commande est lancée comme si on l'avait fait depuis un terminal 
+de commandes et l'appel est bloquant pour le programme C. Par exemple, dans un 
+programme C, l'instruction:
+   
+   system("emacs toto.txt");
+
+Lance l'éditeur "emacs" pour le fichier "toto.txt" et le programme C est bloqué 
+jusqu'à la fermeture d'emacs.
+ 
+Si vous lancez le programme "essai_waitpid_system.c" donné, vous allez constater
+qu'il lance exactement 7 "emacs". Notez également que l'ordre des "emacs" est 
+toujours le même, soit:
+   emacs Toto-11111111111.TXT
+   emacs Toto-22222222222.TXT
+   emacs Toto-33333333333.TXT
+   emacs Toto-33333333333.TXT
+   emacs Toto-22222222222.TXT
+   emacs Toto-33333333333.TXT
+   emacs Toto-33333333333.TXT
+
+Exercice: Le but de l'exercice consiste à représenter graphiquement l'arbre des 
+processus afin de comprendre pourquoi les "emacs" arrivent toujours dans le même
+ordre. Complétez le schéma donné en utilisant les mêmes conventions.

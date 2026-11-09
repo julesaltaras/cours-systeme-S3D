@@ -1,0 +1,11 @@
+*** ForkCounter ***
+
+En utilisant le programme "essai_getpid.c", vérifiez que la numérotation des
+processus est bien globale (i.e. un seul compteur global pour toutes les 
+fenêtres de la machine).
+En effet, si on exécute "essai_getpid" dans une fenêtre, puis dans une autre,
+on constate que le pid (process id) ne fait que croître.
+ 
+Question: en utilisant le résultat de l'affichage de "essai_getpid" dans une
+fenêtre, comment est-il possible de fermer cette fenêtre avec la commande 
+"kill" ?

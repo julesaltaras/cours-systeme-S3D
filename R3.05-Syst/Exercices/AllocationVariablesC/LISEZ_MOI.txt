@@ -1,0 +1,12 @@
+**** AllocationVariablesC ****
+
+Considérez le programme var.c donné. Ce programme fait (ou ne fait pas suivant les
+commentaires placés) des déclarations:
+  - de variables globales en mémoire rémanente (zone habituellement dite "zone statique"),
+  - de variables locales sur la pile (i.e. "stack"),
+ainsi qu'une instruction d'allocation dynamique dans le tas (i.e. "heap").
+
+Décommentez tour à tour les différentes lignes et retrouvez l'implantation des segments 
+en mémoire ainsi que leurs tailles en utilisant la commande "pmap".
+
+Autre commande utile: ps -a (pour connaitre le numéro du processus correspondant).

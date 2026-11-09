@@ -1,0 +1,93 @@
+*** AutomateString2Int ***
+
+L'automate qui est dans le fichier "String2Int.c" correspond exactement au schéma
+de l'automate qui est dans les transparents ("../../M3101.odp").
+
+Cet automate permet de reconnaître si l'entier passé en argument, avec ou sans signe,
+est correctement écrit ou non. Il peut y avoir un nombre quelconque de séparateurs 
+avant et après le nombre, également entre le nombre et le signe.
+
+Le codage en C de l'automate est fait de manière systématique par rapport au schéma
+et respecte les conventions suivantes, conventions que nous respecterons aussi pour
+les autres automates ainsi que pour le DS. Les conventions sont les suivantes:
+
+ - Le numéro de l'état de départ est toujours celui ayant le numéro 0. Il sert donc
+à initialiser la variable "state" dans le code.
+ - Le numéro de l'état de fin (aussi appelé "état de satisfaction") est le plus 
+grand numéro du schéma visible (les états d'erreurs ne sont pas dessinés).
+ - On ne dessine pas le (ou les) état(s) d'erreur(s). S'il y en a, on les numérote
+avec un nombre plus grand que l'état de satisfaction.
+ - L'automate est composé d'une seule boucle "while" avec deux niveaux de "switch"
+imbriqués. Le premier niveau de "switch" concerne l'état de l'automate. Le niveau 
+le plus imbrique concerne la donnée courante pour le tour de boucle.
+ - A chaque tour de boucle, on procède exactement à une et une seule avancé dans 
+les données que l'automate doit consommer. Dans le cas présent, pour l'automate 
+String2Int.c, il y a une seule fois "iCourant++".
+ - La condition d'arrêt de la boucle sera toujours la même pour tous les automates.
+Elle profite de la convention de numérotation des états "(state < S_FINI)".
+ - La position de l'unique instruction qui permet d'avancer d'un seul cran dans les 
+données devant être consommées par l'automate (e.g. iCourant++) sera toujours à la 
+même place dans le code (i.e. juste avant la cascade de "switch").
+
+Les convention précédentes seront toujours utilisées dans les autres automates ainsi 
+que pour les DS.
+
+----
+
+Contrôler, pour chaque état, que le codage C respecte bien le schéma donné dans
+les transparents ("../../M3101.odp").
+
+----
+
+Compiler l'automate avec:
+
+	gcc -o String2Int String2Int.c
+
+Essayer l'automate avec:
+
+	./String2Int ' 34 '
+	./String2Int '+25'
+	./String2Int '+ 2'
+	./String2Int ' -         2   '
+	./String2Int ' - +   2   '
+	./String2Int ' 2a'
+
+----
+
+En plus de permettre l'analyse d'un flux de données pour vérifier s'il est correct
+ou non, l'automate peut aussi effectuer des calculs durant son déroulement.
+Il suffit dans ce cas d'ajouter les calculs durant le passage des transitions.
+
+Regardez dans les transparents ("../../M3101.odp") comment il est possible d'ajouter
+des actions dans les transitions pour calculer la valeur du nombre lu par l'automate
+String2Int.c.
+
+
+Exercice 1: Sans changer la structure de l'automate, complétez le code de 
+"String2Int.c" afin de calculer dans la variable "value" qui est de type "int" la 
+valeur entière correspondant à la chaîne donnée en argument.
+
+Indication concernant le langage C:
+   '6' - '0' == 6
+
+Exemple pour l'algorithme. On calcule la valeur de "163" avec la séquence 
+suivante:
+   (((1 * 10) + 6) * 10) + 3
+
+Remarque: 
+
+----
+
+Exercice 2: Essayez de modifier l'automate afin de détecter le débordement du type
+"int" en C.
+
+Rappel: le type "int" en C est en complément à deux sur n bits et l'intervalle de
+représentation est:
+
+   [-2^(n-1) .. 2^(n-1)-1]
+
+
+Soit, si le type int est sur 32 bits, l'intervalle [-2147483648 .. 2147483647].
+
+Soit, si le type int est sur 64 bits, l'intervalle [-9223372036854775808 .. 9223372036854775807].
+

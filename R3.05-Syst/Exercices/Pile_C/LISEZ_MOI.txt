@@ -1,0 +1,64 @@
+*** Pile_C ***
+
+L'objectif du programme stack_crash.c consiste à mesurer approximativement la 
+taille de la pile lors de l'exécution d'un programme C.
+L'idée de base consiste à faire une fonction récursive volontairement mal 
+programmée: la récursivité ne s'arrète pas et le nombre d'appels de fonctions 
+augmente donc sans fin.
+L'espace mémoire de la pile étant limité, il est normal de constater que 
+l'exécution de ce programme se termine par une erreur indiquant une sortie de 
+zone mémoire.
+
+La variable "compteur" indique le nombre d'appels de fonctions. La variable 
+"distance" donne une idée approximative de la taille de la pile. 
+
+A chaque appel de fonction, dans le cas général, la pile ("stack" in English) 
+monte suffisamment afin de pouvoir stocker les informations suivantes:
+- Adresse de retour dans le code appelant (i.e. pour pouvoir reprendre 
+l'exécution au bon endroit quand l'appel de la fonction se termine). 
+- Emplacement pour les arguments. Plus la fonction possède d'arguments, plus la 
+place prise par un étage d'appel ("stack frame" in English) est importante.
+- Emplacement pour les variables locales. Comme pour les arguments, plus la fonction
+possède de variables locales, plus la place prise par un étage d'appel est 
+importante.
+
+----
+
+Manipulation 1: essayer d'ajouter des variables locale et/ou des arguments pour 
+regarder si le nombre d'appels possibles (le "compteur" d'appels) diminue 
+effectivement.
+
+Le principe utilisé pour estimer la taille de la pile consiste à comparer l'adresse
+d'une variable locale située dans la fonction "main" (i.e. en bas de la pile) avec
+l'adresse d'une variable locale située dans l'appel courant (i.e. en sommet de pile).
+Pour cette raison, la variable "distance" affiche donc la différence entre deux 
+pointeurs.
+Notons que pour la plus grande majorité des ordinateurs, la pile monte dans le sens
+inverse des adresses(*).
+
+----
+
+Manipulation 2: Essayer le programme en faisant varier le niveau d'optimisation lors
+de la compilation C (option "-O2" ou "-O3" de gcc).
+Dans certains cas, il est mème possible d'avoir une exécution qui ne s'arrète pas (**).
+
+----
+ 
+Exercice: Modifier le programme donné pour afficher la "distance" en Méga-octets.
+
+----
+
+Manipulation 3: Pour contrôler le calcul de la taille de la pile, lancer l'exécutable 
+de votre "stack_crash.c" et stoppez le afin de connaître son pid (avec "ps" par exemple).
+Utilisez ensuite la commande "pmap" avec ce pid pour comparer avec la taille de la pile 
+estimée avec les indications de "pmap". 
+
+----
+
+(*) Historiquement (et souvent encore), le tas (heap) progresse dans le sens croissant
+en partant des adresses basses alors que la pile (stack) démarre en fin de mémoire pour 
+aller vers les adresses basses. Tant que les deux zones ne se chevauchent pas, le 
+programme peut fonctionner normalement.
+
+(**) En effet, l'appel récursif qui est dans la fonction est un appel terminal. Dans 
+ce cas, il est possible qu'il soit remplacé par une boucle sans fin.

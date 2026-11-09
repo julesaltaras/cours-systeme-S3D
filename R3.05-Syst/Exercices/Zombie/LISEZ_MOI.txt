@@ -1,0 +1,18 @@
+*** Zombie ***
+
+Note: comme tous les exercices sur "fork", cet exercice doit être fait en local 
+et non pas sur le serveur (i.e. pas sur "charlemagne").
+
+Objectif: comprendre ce qu'est un processus "Zombie".
+
+Un Zombie est ce qui reste d'un processus ayant terminé son exécution avant son 
+père; le Zombie subsiste afin que le père puisse tester le code retour de son 
+fils (le Zombie).
+
+----
+
+Exercice: Écrire un petit programme en C permettant de créer une centaine de processus
+de la catégorie "Zombie". Concrètement le programme que vous devez écrire doit lancer 
+la centaine de fils, puis, faire en sorte que vous ayez le temps de voir les Zombies 
+avec la commande "top". 
+

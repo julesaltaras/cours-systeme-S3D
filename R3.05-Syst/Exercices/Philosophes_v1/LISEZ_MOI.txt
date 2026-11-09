@@ -1,0 +1,78 @@
+*** Threads_Philosophes_v1 ***
+
+Le problème du dîner des philosophes, est un grand classique de programmation
+concurrente inventé par E.Dijkstra. Ce problème d'algorithmique met en avant les 
+problèmes d'interblocage et d'ordonnancement.
+
+Le problème est le suivant: cinq philosophes se réunissent autour d'une table
+ronde pour manger et disserter. Chacun dispose d'une assiette de riz et d'une
+baguette située à gauche de l'assiette. Mais pour manger, un philosophe doit
+disposer de deux baguettes, il doit donc en emprunter une à son voisin de 
+droite. La situation est problématique mais heureusement les philosophes ont
+également pour habitude de penser, laissant ainsi du temps aux autres pour manger.
+
+Le but du jeu est de faire en sorte que le maximum de philosophes puisse manger 
+en même temps et qu'il n'y ait pas d'interblocage. Exemple simple 
+d'interblocage: si chaque philosophe prend sa baguette gauche, aucun ne pourra
+prendre de baguette droite et tous mourront de faim. 
+
+Cinq philosophes Chinois sont donc assis autour d'une table. Chaque
+philosophe a bien une assiette de riz devant lui, mais, malheureusement il manque
+des baguettes: chaque philosophe a une seule baguette à sa droite et une seule 
+baguette à sa gauche (soit 5 baguettes en tout).
+Dès qu'un philosophe arrive à prendre deux baguettes en même temps,
+alors il mange 1 seul grain de riz puis, afin de pouvoir continuer à
+parler, il repose immédiatement les deux baguettes à leur place d'origine,
+laissant ainsi à ses voisins la possibilité de manger.
+
+On décide d'utiliser 1 thread Java pour chaque philosophe. Mettre en place
+le code Java permettant de simuler le repas des philosophe Chinois sachant
+également que:
+ - au début du repas/discussion, tous les philosophes ont le même nombre
+de grains de riz dans leur assiette,
+ - quand un philosophe arrive à avoir les deux baguettes, il mange un seul 
+grain de riz, puis repose les deux baguettes,
+ - pour mettre un petit peu d'aléa, le temps pris par chaque philosophe pour
+manger un grain de riz est de la forme: 
+             try {
+                    sleep((long)(Math.random() * 10));
+                 } 
+             catch (InterruptedException e) {}
+
+Indications: 
+ - à chaque philosophe est associé un Thread (la classe Philosophe
+ "extends Thread" ou "implements Runnable"),
+ - en plus du programme Main.java qui est donné, il reste à définir deux 
+classes: Baguette.java et Philosophe.java,
+ - les méthodes de la classe Baguette sont en section critique (i.e.
+ "synchronized"). 
+
+Étape 1: Choisir et expliquer les attributs pour les classes Baguette.java 
+et Philosophe.java. On choisira les bons attributs afin d'éviter toutes 
+les possibilités de tricherie:
+ - un Philosophe ne peut accéder qu'à deux baguettes (i.e. celle directement 
+à sa gauche et celle directement à sa droite),
+ - un Philosophe ne doit pas pouvoir s'emparer de force d'une baguette qui 
+est dans les mains d'un de ses voisins,
+ - seul le philosophe qui tient une baguette donnée est capable de la reposer,
+ - et bien entendu, une baguette n'est tenue que par un seul philosophe à la 
+fois.
+
+Compte tenu de toutes ces contraintes, choisissez les bons attributs et les bonnes
+méthodes dans les classes Baguette.java et Philosophe.java.
+
+En ce qui concerne la synchronisation des accès, on se limite, pour cette 
+première version, au strict minimum (i.e. on utilise uniquement le mot 
+clef "synchronized").
+
+Le fichier Main.java est donné et ne doit pas être modifié. Tel qu'il est donné, 
+il permet déjà de limiter l'accès aux baguettes comme demandé précédemment.
+
+Étape 2: Écrire l'algorithme déroulé par chaque Philosophe. Tester votre solution
+en essayant de réfléchir aux éventuels risques d'interblocage.
+
+Étape 3: Évaluez votre solution en terme d'attente active en inspectant par exemple
+une trace d'exécution.
+Essayer de limiter l'attente active en utilisant la méthode yield() (héritée de Object).
+
+ 

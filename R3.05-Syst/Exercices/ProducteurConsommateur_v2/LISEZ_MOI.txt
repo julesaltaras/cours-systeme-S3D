@@ -1,0 +1,56 @@
+*** ProducteurConsommateur_v2 ***
+
+Exemple d'utilisation des méthodes "x.wait()" et "x.notify()" pour réduire 
+l'attente active.
+
+Principe de fonctionnement des méthodes "wait()" / "notify()".
+
+Un appel "x.wait()" libère le moniteur sur "x" et met le thread en attente d'un
+appel "x.notify()" effectué par un autre thread. Le fait de libérer le moniteur
+permet à un autre thread de franchir le bloc synchronized sur "x". Notons que le
+thread qui est maintenant endormis par son appel à "x.wait()" compte sur un autre
+thread pour son réveil grâce à un "x.notify()". Si aucun autre thread n'effectue 
+"x.notify()", la situation se bloque.
+
+Très logiquement, un appel de la méthode "x.wait()" n'a de sens que si le thread
+qui exécute cet appel est à l'intérieur d'un bloc "synchronized" concernant 
+l'objet "x". Dans le cas contraire, l'appel échoue avec l'exception 
+IllegalMonitorStateException. Si l'appel est correct, le moniteur (i.e. le verrou)
+de l'objet "x" est libéré et le thread est mis en attente. L'attente dure jusqu'à
+ce qu'un autre thread exécute un appel "x.notify()".
+
+De même, un appel de la méthode "x.notify()" n'a de sens que si le thread qui 
+exécute cet appel est à l'intérieur d'un bloc synchronized concernant l'objet "x".
+Comme la documentation Java n'est pas très claire sur l'instant précis du réveil, 
+une bonne pratique de programmation consiste à mettre l'appel "x.notify()" près de
+la sortie du bloc synchronized concernant "x" (i.e. juste avant l'accolade fermante
+du bloc de synchronisation).
+
+----
+
+Manipulation 1: En principe, le code qui vous est donné doit fonctionner sans que
+la situation ne se bloque et en assurant une parfaite transmission des caractères
+du producteur vers le consommateur. La manipulation 1 consiste à vérifier que le 
+code donné fonctionne bien sur votre machine (si ce n'est pas le cas, signalez le 
+à votre enseignant). Attention, selon votre version de Java, votre système ou 
+selon l'architecture de votre ordinateur, vous pouvez retirer ou non les 
+utilisations du mot clef "volatile".
+
+Pour bien vérifier une solution (i.e. pas de blocage et bonne transmission), la
+commande bash suivante est conseillée:
+
+   while true ; do echo $((x++)); java Main > /tmp/t1; java Main > /tmp/t2; diff /tmp/t1 /tmp/t2; done
+
+----
+
+Manipulation 2: Essayer d'enlever le mot clef "volatile" pour constater s'il a un
+effet ?
+Sauf modification du compilateur java, habituellement, sans le mot clef volatile,
+cette solution se bloque.
+
+----
+
+Exercice: Comme la synchronisation est maintenant effectuée au niveau de la classe
+DepotCommun.java, vous pouvez simplifier les classes Producteur.java et 
+Consommateur.java. Donnez le nouveau code (bien plus simple) des classes 
+Consommateur.java, Producteur.java et DepotCommun.java.

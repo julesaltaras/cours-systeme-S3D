@@ -1,0 +1,47 @@
+*** VariablesUnix ***
+
+Objectif: comprendre les variables d'environnement sous Unix.
+
+Il y a deux sortes de variables d'environnement sous Unix, celles qui sont 
+complètement locales au processus courant et celles qui sont recopiées dans la
+mémoire des processus fils.
+
+La notation bash pour changer ou définir une nouvelle variable locale est:
+
+x=1
+
+La notation bash pour changer ou définir une nouvelle variable qui sera recopiée
+vers un processus fils est:
+
+export y=1
+
+----
+
+Essayer de comprendre ce qui se passe quand vous exécutez le script essai_variables.sh
+pour chacune des 4 façons suivantes:
+
+$ ./essai_variables.sh
+$ bash essai_variables.sh
+$ source essai_variables.sh
+$ . essai_variables.sh
+
+Question 1: pour chacun des cas qui précède, indiquez s'il y a ou non création d'un 
+processus fils ?
+
+-----
+
+Question 2: Sachant que la variable PATH est celle qui sert de guide pour la recherche
+des commandes, comment faire pour modifier durablement cette variable (d'une session
+à l'autre) ?
+
+-----
+
+Lisez, compilez et exécutez le programme "essai_variables.c".
+
+Notez qu'en plus de la fonction C "getenv", il existe aussi une fonction pour modifier 
+ou ajouter une variable d'environnement. Il s'agit de la fonction "putenv" (faire un
+"man 3 putenv" pour avoir le manuel de cette fonction).
+
+Question 3: Selon vous, est-il possible de programmer en C l'équivalent de la 
+commande "cd" de bash ? Si oui, comment ? Si non pourquoi ?
+

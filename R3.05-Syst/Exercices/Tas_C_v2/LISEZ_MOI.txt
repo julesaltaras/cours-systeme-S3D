@@ -1,0 +1,46 @@
+*** Tas_C_V2 ***
+
+Objectif: mesurer la taille mémoire maximale du tas en C sur votre machine.
+
+Lire, compiler puis exécuter le programme "malloc_max.c". Lors de l'exécution, ouvrir 
+une autre fenêtre afin de contrôler grossièrement (avec la commande "top" ou bien 
+avec "pmap" ) le calcul du maximum de mémoire qui sera allouée.
+
+Question 0 : A l'aide de la commande "watch -n 0.1 free",
+notez ce  que devient la place libre en mémoire  et ce que devient la
+taille de la zone de swap. Au fait : quelle est la définition du
+"swap" ?
+
+---
+
+Question 0-bis : A l'aide de la commande "top", vérifiez l'existence
+du processus de swap ainsi que son influence sur la taille de l'espace
+libre.
+
+---
+
+Question 1: La consommation mémoire affichée par "top" correspond-t-elle à l'affichage
+du programme "malloc_max.c" ?
+
+----
+
+Regardez quelle est la taille de la mémoire physique de votre ordinateur en consultant
+le fichier fictif(*) "/proc/meminfo". Comparez ce chiffre avec la place prise par le 
+processus lors de la manipulation précédente.
+
+Question 2: Sur votre ordinateur, la taille de la mémoire physique est elle plus ou 
+moins grande que la place prise par le processus ?
+
+----
+
+Lancez deux exemplaires de "malloc_max.c" de façon simultanée pour savoir si la présence
+du deuxième limite le premier en terme de place mémoire.
+Essayez ensuite de lancer un plus grand nombre d'exemplaires de "malloc_max.c".
+
+Question 3: la taille mémoire prise par deux exemplaires du programme "malloc_max.c" 
+dépasse-t-elle la taille de la mémoire réélle 
+
+----
+
+(*) Avec un "ls -l /proc/meminfo" on constate que la taille de ce fichier vaut 0 alors que
+l'affichage du fichier contient bien des caractères.

@@ -1,0 +1,29 @@
+*** SystemVsExeclp ***
+
+Objectif: bien comprendre "execlp" / "system" / "fork".
+
+Manipulation 1: Essayez la version non modifée de "system-vs-execlp.c". Ce 
+programme C est capable de lancer une autre commande. Faites des essais en 
+regardant bien l'affichage du "status" à la fin de l'exécution. Il existe
+un "man system".
+
+Manipulation 2: Modifiez le programme "system-vs-execlp.c"; mettre en commentaire 
+la ligne contenant l'appel de la fonction "system" et enlever le commentaire pour 
+la ligne contenant l'appel "execlp". Refaire les essais et constater la différence 
+très nette. Lire le "man execlp" pour comprendre.
+
+Exercice 1: Cet exercice consiste à reprogrammer en C une fonction similaire à la 
+fonction "system" (sans utiliser la vraie fonction "system" évidemment). Le nom de 
+votre fonction sera "mon_system". Pour simplifier, votre fonction "mon_system" ne 
+retourne pas le "status" de la commande exécutée. La signature de votre fonction 
+est donc la suivante:
+
+   void mon_systeme(char *commande) 
+
+Donnez et testez la définition complète de "mon_system". Indications: il faut 
+utiliser "fork", "execlp" ainsi que "waitpid". La fonction n'est pas très longue 
+(une dizaine de lignes environ).
+
+Exercice 2: En partant de la solution de l'exercice "Fork_gcc", écrire une version 
+similaire et moins gourmande en nombre de processus (ne plus utiliser "system", 
+mais utiliser directement "execlp").

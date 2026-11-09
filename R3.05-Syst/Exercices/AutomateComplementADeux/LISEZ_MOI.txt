@@ -1,0 +1,53 @@
+*** AutomateComplementADeux ***
+
+Faire le dessin de l'automate qui est codé dans "Bin2Int.c".
+
+Ajoutez sur le schéma de votre automate les instructions C permettant de calculer
+dans la variable "valeur" qui est de type "int" la valeur de l'entier qui correspond 
+à la chaine binaire donnée en complément à deux.
+Vérifiez que cela fonctionne en modifiant le programme initial.
+
+Indications:
+
+Voici ce que doit donner l'automate sur lequel on a ajouté les intructions de
+conversion: 
+    $ ./Bin2Int 0111
+    Valeur = 7
+    $ ./Bin2Int 0110
+    Valeur = 6
+    $ ./Bin2Int 0101
+    Valeur = 5
+    $ ./Bin2Int 0001
+    Valeur = 1
+    $ ./Bin2Int 0000
+    Valeur = 0
+    $ ./Bin2Int 1111
+    Valeur = -1
+    $ ./Bin2Int 1110
+    Valeur = -2
+    $ ./Bin2Int 1001
+    Valeur = -7
+    $ ./Bin2Int 1000
+    Valeur = -8
+    $ ./Bin2Int 11111111
+    Valeur = -1
+    $ ./Bin2Int 01111111
+    Valeur = 127
+
+L'instruction C "valeur = -1;" positionne tous les bits de l'emplacement mémoire 
+correspondant à 1.
+
+L'instruction C "valeur = valeur << 1;" décale vers la gauche tous les bits avec 
+injection d'un bit à 0 dans l'emplacement de poids faible.
+Ceci est équivalent à une multiplication par deux.
+
+L'instruction C "valeur = (valeur << 1) + 1;" est équivalente à multiplier "valeur" 
+par deux et ajouter 1 ensuite.
+
+Finalement, il est possible de faire le calcul de la variable "valeur" en plaçant
+au bon endroit les instructions suivantes:
+
+  valeur = -1;
+  valeur = valeur << 1;
+  valeur = (valeur << 1) + 1
+
